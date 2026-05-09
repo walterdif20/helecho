@@ -7,7 +7,11 @@ export default function App() {
       <header className="navbar">
         <div className="container nav-inner">
           <strong>{businessInfo.name}</strong>
-          <a href="#ubicacion">Ubicación</a>
+          <nav>
+            <a href="#sabores">Sabores</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#ubicacion">Ubicación</a>
+          </nav>
         </div>
       </header>
 
@@ -18,7 +22,10 @@ export default function App() {
           <p className="lead">
             Tazas cuidadas, sabores de temporada y una atmósfera tranquila para tus pausas.
           </p>
-          <a href="#ubicacion" className="hero-cta">Conocé cómo llegar</a>
+          <div className="hero-actions">
+            <a href="#ubicacion" className="hero-cta">Conocé cómo llegar</a>
+            <a href="#servicios" className="hero-secondary">Ver servicios</a>
+          </div>
         </section>
 
         <section className="benefits">
@@ -29,7 +36,16 @@ export default function App() {
           </div>
         </section>
 
-        <section className="container section flavor-section">
+        <section className="container stats" aria-label="Métricas del local">
+          {businessInfo.stats.map((item) => (
+            <article key={item.label}>
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+            </article>
+          ))}
+        </section>
+
+        <section id="sabores" className="container section flavor-section">
           <h2>Sabores destacados</h2>
           <div className="cards">
             {businessInfo.featuredFlavors.map((flavor) => (
@@ -37,6 +53,30 @@ export default function App() {
                 <h3>{flavor.name}</h3>
                 <p>{flavor.note}</p>
               </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="servicios" className="container section">
+          <h2>Servicios pensados para cada momento</h2>
+          <div className="cards">
+            {businessInfo.services.map((service) => (
+              <article key={service.title} className="card">
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="container section testimonials">
+          <h2>Lo que dicen nuestros clientes</h2>
+          <div className="cards">
+            {businessInfo.testimonials.map((testimonial) => (
+              <blockquote key={testimonial.author} className="card quote-card">
+                <p>“{testimonial.quote}”</p>
+                <cite>{testimonial.author}</cite>
+              </blockquote>
             ))}
           </div>
         </section>
@@ -50,6 +90,8 @@ export default function App() {
                 <li key={line}>{line}</li>
               ))}
             </ul>
+            <p className="contact-line">WhatsApp: {businessInfo.phone}</p>
+            <p className="contact-line">Email: {businessInfo.email}</p>
           </div>
           <iframe
             title="Mapa de Helecho Café"
@@ -61,7 +103,7 @@ export default function App() {
 
         <section className="cta container section">
           <h2>Te esperamos para tu próxima pausa.</h2>
-          <p>Guardá este lugar y vení a descubrir el sabor de la semana.</p>
+          <p>Reservá por WhatsApp y llegá con tu mesa lista.</p>
           <a href="#ubicacion" className="hero-cta">Reservá tu próxima visita</a>
         </section>
       </main>
