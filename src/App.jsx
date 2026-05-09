@@ -18,6 +18,7 @@ export default function App() {
           <p className="lead">
             Tazas cuidadas, sabores de temporada y una atmósfera tranquila para tus pausas.
           </p>
+          <a href="#ubicacion" className="hero-cta">Conocé cómo llegar</a>
         </section>
 
         <section className="benefits">
@@ -28,7 +29,7 @@ export default function App() {
           </div>
         </section>
 
-        <section className="container section">
+        <section className="container section flavor-section">
           <h2>Sabores destacados</h2>
           <div className="cards">
             {businessInfo.featuredFlavors.map((flavor) => (
@@ -61,6 +62,7 @@ export default function App() {
         <section className="cta container section">
           <h2>Te esperamos para tu próxima pausa.</h2>
           <p>Guardá este lugar y vení a descubrir el sabor de la semana.</p>
+          <a href="#ubicacion" className="hero-cta">Reservá tu próxima visita</a>
         </section>
       </main>
 
