@@ -2,18 +2,18 @@ import { businessInfo } from './data/business';
 import WhatsAppFloatingButton from './components/WhatsAppFloatingButton';
 
 const galleryImages = [
-  {
-    src: 'https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Barista sirviendo café en barra de especialidad',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80',
-    alt: 'Taza de café con arte latte sobre mesa de madera',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80',
-    alt: 'Espacio interior de cafetería moderna con luz natural',
-  },
+  { src: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1200&q=80', alt: 'Mesa con café y pastelería artesanal' },
+  { src: 'https://images.unsplash.com/photo-1464306076886-da185f6a9d05?auto=format&fit=crop&w=900&q=80', alt: 'Porciones de torta en vitrina de cafetería' },
+  { src: 'https://images.unsplash.com/photo-1453614512568-c4024d13c247?auto=format&fit=crop&w=900&q=80', alt: 'Ensalada fresca servida en plato' },
+];
+
+const cravings = ['Algo dulce', 'Algo salado', 'Algo saludable', 'Algo para compartir', 'Algo para llevar'];
+
+const ritual = [
+  ['08:00', 'Café y desayuno'],
+  ['12:30', 'Almuerzo simple y rico'],
+  ['16:30', 'Merienda artesanal'],
+  ['20:00', 'Última pausa antes de cerrar'],
 ];
 
 export default function App() {
@@ -21,16 +21,11 @@ export default function App() {
     <div className="page">
       <div className="ambient ambient-a" aria-hidden="true" />
       <div className="ambient ambient-b" aria-hidden="true" />
-
       <header className="navbar">
         <div className="container nav-inner">
           <strong className="brand">{businessInfo.name}</strong>
-          <nav>
-            <a href="#sabores">Sabores</a>
-            <a href="#servicios">Servicios</a>
-            <a href="#ubicacion">Ubicación</a>
-          </nav>
-          <a href="#ubicacion" className="nav-cta">Reservar mesa</a>
+          <nav><a href="#antojos">Antojos</a><a href="#servicios">Menú del día</a><a href="#ubicacion">Ubicación</a></nav>
+          <a href="#ubicacion" className="nav-cta">Vení a conocerlo</a>
         </div>
       </header>
 
@@ -38,118 +33,39 @@ export default function App() {
         <section className="hero container">
           <div className="hero-copy">
             <p className="tag">{businessInfo.subtitle}</p>
-            <h1>Una experiencia boutique de café para clientes que valoran diseño, sabor y pausa.</h1>
-            <p className="lead">Creamos un recorrido sensorial: barra abierta, repostería de estación y espacios que se sienten como un editorial vivo.</p>
-            <div className="hero-actions">
-              <a href="#ubicacion" className="hero-cta">Conocé cómo llegar</a>
-              <a href="#servicios" className="hero-secondary">Descubrir servicios</a>
-            </div>
+            <h1>Un rincón artesanal para desayunar, almorzar o merendar en el centro de Necochea.</h1>
+            <p className="lead">Helecho no es solo una cafetería: es pausa urbana, cocina de vitrina y sabores caseros para todos los días.</p>
+            <div className="hero-actions"><a href="#antojos" className="hero-cta">Ver propuesta</a><a href="#ubicacion" className="hero-secondary">Cómo llegar</a></div>
           </div>
-
-          <aside className="hero-panel" aria-label="Datos destacados">
-            <p>Experiencia destacada</p>
-            <strong>93% de clientes regresan durante el mismo mes.</strong>
-            <div className="panel-pills">
-              {businessInfo.benefits.map((item) => (
-                <span key={item}>{item}</span>
-              ))}
-            </div>
-          </aside>
+          <aside className="hero-panel"><p>HELECHO por MARU PASTELERÍA</p><strong>Pastelería artesanal, desayuno, almuerzo y merienda.</strong><div className="panel-pills">{businessInfo.benefits.map((item) => <span key={item}>{item}</span>)}</div></aside>
         </section>
 
         <section className="container photo-mosaic" aria-label="Galería del café">
-          <figure className="mosaic-item mosaic-main">
-            <img src={galleryImages[0].src} alt={galleryImages[0].alt} loading="lazy" />
-          </figure>
-          <figure className="mosaic-item">
-            <img src={galleryImages[1].src} alt={galleryImages[1].alt} loading="lazy" />
-          </figure>
-          <figure className="mosaic-item">
-            <img src={galleryImages[2].src} alt={galleryImages[2].alt} loading="lazy" />
-          </figure>
+          {galleryImages.map((img, i) => <figure key={img.src} className={`mosaic-item ${i === 0 ? 'mosaic-main' : ''}`}><img src={img.src} alt={img.alt} loading="lazy" /></figure>)}
+        </section>
+
+        <section id="antojos" className="container section cravings-layout">
+          <div className="section-head"><p className="tag">Para todos los antojos</p><h2>De la vitrina al plato: siempre hay algo rico esperándote.</h2></div>
+          <div className="cravings-cloud">{cravings.map((item) => <span key={item}>{item}</span>)}</div>
+          <p className="menu-copy">Café, pastelería artesanal, tortas, cheesecake, vitrina del día, ensaladas, viandas y opciones saladas. También tenemos opciones veganas, sin azúcar, keto y <strong>consultá opciones sin TACC disponibles</strong>.</p>
+        </section>
+
+        <section id="servicios" className="container section ritual-section">
+          <div className="section-head"><p className="tag">Ritual del día</p><h2>Tu pausa cambia según la hora, el clima y el antojo.</h2></div>
+          <ol className="ritual-line">{ritual.map(([hour, text]) => <li key={hour}><span>{hour}</span><p>{text}</p></li>)}</ol>
         </section>
 
         <section className="container stats" aria-label="Métricas del local">
-          {businessInfo.stats.map((item) => (
-            <article key={item.label}>
-              <span className="icon" aria-hidden="true">✦</span>
-              <strong>{item.value}</strong>
-              <span>{item.label}</span>
-            </article>
-          ))}
-        </section>
-
-        <section id="sabores" className="container section flavor-section">
-          <div className="section-head">
-            <p className="tag">Carta Curada</p>
-            <h2>Sabores que transforman una pausa en un ritual</h2>
-          </div>
-          <div className="flavor-grid">
-            <article className="card featured-flavor">
-              <span className="card-accent" aria-hidden="true" />
-              <h3>{businessInfo.featuredFlavors[0].name}</h3>
-              <p>{businessInfo.featuredFlavors[0].note}</p>
-            </article>
-            {businessInfo.featuredFlavors.slice(1).map((flavor) => (
-              <article key={flavor.name} className="card flavor-mini">
-                <h3>{flavor.name}</h3>
-                <p>{flavor.note}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="servicios" className="container section">
-          <div className="section-head">
-            <p className="tag">Propuesta Premium</p>
-            <h2>Servicios diseñados para agendas reales</h2>
-          </div>
-          <div className="service-grid">
-            {businessInfo.services.map((service, index) => (
-              <article key={service.title} className={`card service-card service-${index + 1}`}>
-                <span className="service-id">0{index + 1}</span>
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="container section testimonials">
-          <div className="section-head">
-            <p className="tag">Prueba Social</p>
-            <h2>Clientes que nos recomiendan por experiencia completa</h2>
-          </div>
-          <div className="testimonial-grid">
-            {businessInfo.testimonials.map((testimonial, index) => (
-              <blockquote key={testimonial.author} className={`card quote-card quote-${index + 1}`}>
-                <p>“{testimonial.quote}”</p>
-                <cite>{testimonial.author}</cite>
-              </blockquote>
-            ))}
-          </div>
+          {businessInfo.stats.map((item) => <article key={item.label}><strong>{item.value}</strong><span>{item.label}</span></article>)}
         </section>
 
         <section id="ubicacion" className="container section split">
-          <div className="location-card">
-            <h2>Ubicación y horarios</h2>
-            <p>{businessInfo.address}</p>
-            <ul>{businessInfo.hours.map((line) => <li key={line}>{line}</li>)}</ul>
-            <p className="contact-line">WhatsApp: {businessInfo.phone}</p>
-            <p className="contact-line">Email: {businessInfo.email}</p>
-          </div>
+          <div className="location-card"><h2>Nos encontrás en el centro de Necochea</h2><p>{businessInfo.address}</p><ul>{businessInfo.hours.map((line) => <li key={line}>{line}</li>)}</ul><p className="contact-line">WhatsApp: {businessInfo.phone}</p><p className="contact-line">Email: {businessInfo.email}</p></div>
           <iframe title="Mapa de Helecho Café" src={businessInfo.mapsEmbed} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
         </section>
 
-        <section className="cta container section">
-          <h2>Te esperamos para tu próxima pausa.</h2>
-          <p>Reservá por WhatsApp y llegá con tu mesa lista.</p>
-          <a href="#ubicacion" className="hero-cta">Reservá tu próxima visita</a>
-        </section>
       </main>
-
-      <footer className="footer"><div className="container"><p>© {new Date().getFullYear()} {businessInfo.name}. Todos los derechos reservados.</p></div></footer>
-
+      <footer className="footer"><div className="container"><p>© {new Date().getFullYear()} {businessInfo.name}. Hecho con cariño en Necochea.</p></div></footer>
       <WhatsAppFloatingButton />
     </div>
   );
