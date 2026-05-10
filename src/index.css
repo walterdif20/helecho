@@ -19,8 +19,8 @@ body { margin: 0; font-family: Inter, system-ui, sans-serif; color: var(--ink); 
 .navbar { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--surface) 84%, white); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
 .nav-inner { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1rem; padding: .85rem 0; }
 .brand { display:flex; align-items:center; gap:.6rem; text-decoration:none; color:var(--wood); }
-.brand-text { font-family: 'Fraunces', serif; font-size: 1.3rem; line-height:1.1; max-width: 220px; }
-.brand-logo { width:68px; height:68px; border-radius:114px; background:linear-gradient(150deg,#f4fbf0,#e8f1e4); display:grid; place-items:center; overflow:hidden; }
+.brand-text { font-family: 'Fraunces', serif; font-size: 1.2rem; line-height:1.1; max-width: 220px; }
+.brand-logo { width:58px; height:58px; border-radius:114px; background:linear-gradient(150deg,#f4fbf0,#e8f1e4); display:grid; place-items:center; overflow:hidden; }
 .brand-logo img { width:100%; height:100%; object-fit:cover; display:block; }
 .nav-inner nav { display: flex; gap: .9rem; justify-content: center; flex-wrap:wrap; }
 .nav-inner a { color: var(--accent); text-decoration: none; }
