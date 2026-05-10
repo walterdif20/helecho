@@ -24,7 +24,9 @@ export default function App() {
       <header className="navbar">
         <div className="container nav-inner">
           <a href="#" className="brand" aria-label="Inicio de Helecho">
-            <span className="brand-logo" aria-hidden="true">Logo</span>
+            <span className="brand-logo" aria-hidden="true">
+              <img src="/logo-helecho.png" alt="" />
+            </span>
             <span className="brand-text">{businessInfo.name}</span>
           </a>
           <nav><a href="#antojos">Antojos</a><a href="#servicios">Menú del día</a><a href="#ubicacion">Ubicación</a></nav>
@@ -69,7 +71,16 @@ export default function App() {
         </section>
 
         <section id="ubicacion" className="container section split">
-          <div className="location-card"><h2>Nos encontrás en el centro de Necochea</h2><p>{businessInfo.address}</p><ul>{businessInfo.hours.map((line) => <li key={line}>{line}</li>)}</ul><p className="contact-line">WhatsApp: {businessInfo.phone}</p><p className="contact-line">Email: {businessInfo.email}</p></div>
+          <div className="location-card">
+            <p className="location-kicker">Nos encontrás en el centro</p>
+            <h2>Pasá por Helecho en Necochea</h2>
+            <p className="location-lead">{businessInfo.address}</p>
+            <ul>{businessInfo.hours.map((line) => <li key={line}>{line}</li>)}</ul>
+            <div className="location-chips">
+              <span>Desayuno</span><span>Almuerzo</span><span>Merienda</span>
+            </div>
+            <p className="contact-line">WhatsApp: {businessInfo.phone}</p><p className="contact-line">Email: {businessInfo.email}</p>
+          </div>
           <iframe title="Mapa de Helecho Café" src={businessInfo.mapsEmbed} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
         </section>
 
