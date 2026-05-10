@@ -1,50 +1,50 @@
 export const businessInfo = {
-  name: 'Helecho Café',
-  subtitle: 'Café de especialidad en una pausa editorial',
+  name: 'HELECHO por MARU PASTELERÍA',
+  subtitle: 'Pastelería artesanal en el centro de Necochea',
   whatsapp: '54 9 11 5555 1212',
   phone: '+54 11 5555-1212',
   email: 'hola@helechocafe.com',
-  address: 'Av. Siempreviva 123, Palermo, Buenos Aires',
+  address: 'Calle céntrica de Necochea, Buenos Aires',
   hours: [
     'Lunes a Viernes: 08:00 - 20:00',
     'Sábados: 09:00 - 21:00',
     'Domingos: 09:00 - 19:00',
   ],
   featuredFlavors: [
-    { name: 'Lavanda & Miel', note: 'Suave, floral y reconfortante.' },
-    { name: 'Naranja Especiada', note: 'Cítrico cálido con final dulce.' },
-    { name: 'Cacao Intenso', note: 'Profundo y equilibrado para la tarde.' },
+    { name: 'Vitrina del día', note: 'Tortas, porciones y pastelería artesanal recién hecha.' },
+    { name: 'Opciones saladas', note: 'Tostados, sándwiches y platos simples para el almuerzo.' },
+    { name: 'Cheesecake de la casa', note: 'Cremoso, suave y uno de los favoritos de la tarde.' },
   ],
-  benefits: ['Grano seleccionado', 'Pastelería artesanal', 'Wi-Fi y enchufes'],
+  benefits: ['Desayuno', 'Almuerzo', 'Merienda', 'Hecho artesanalmente'],
   stats: [
-    { label: 'Reseñas 5★', value: '1.2k+' },
-    { label: 'Variedades por temporada', value: '18' },
-    { label: 'Tiempo promedio de espera', value: '7 min' },
+    { label: 'En el centro de Necochea', value: '📍' },
+    { label: 'Momentos del día cubiertos', value: '3' },
+    { label: 'Opciones para cada antojo', value: 'Todo el día' },
   ],
   services: [
     {
-      title: 'Brunch de autor',
-      description: 'Combinaciones frescas para reuniones, citas o pausas de trabajo.',
+      title: 'Desayuno con café',
+      description: 'Café de especialidad, piezas de vitrina y opciones para arrancar el día a tu ritmo.',
     },
     {
-      title: 'Coffee to go',
-      description: 'Retirá tu pedido rápido desde WhatsApp y pasá a buscarlo sin espera.',
+      title: 'Almuerzo simple y rico',
+      description: 'Ensaladas, viandas y propuestas saladas para una pausa práctica en el centro.',
     },
     {
-      title: 'Mesas de trabajo',
-      description: 'Zonas tranquilas con enchufes y buena luz para concentrarte.',
+      title: 'Merienda artesanal',
+      description: 'Tortas, cheesecake y pastelería para compartir o llevar.',
     },
   ],
   testimonials: [
     {
-      quote: 'Excelente café y atención cálida. Ideal para trabajar sin ruido.',
-      author: 'Martina G.',
+      quote: 'Lugar cálido, rico y bien de barrio. Siempre encontramos algo distinto en la vitrina.',
+      author: 'Carla N.',
     },
     {
-      quote: 'Los sabores de temporada son un diferencial real. Volvemos siempre.',
-      author: 'Santiago y Lu',
+      quote: 'Voy por el almuerzo y me quedo por la merienda. Atención súper cercana.',
+      author: 'Tomás R.',
     },
   ],
   mapsEmbed:
-    'https://www.google.com/maps?q=Buenos+Aires&output=embed',
+    'https://www.google.com/maps?q=Necochea,+Buenos+Aires&output=embed',
 };
