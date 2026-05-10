@@ -1,6 +1,21 @@
 import { businessInfo } from './data/business';
 import WhatsAppFloatingButton from './components/WhatsAppFloatingButton';
 
+const galleryImages = [
+  {
+    src: 'https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Barista sirviendo café en barra de especialidad',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80',
+    alt: 'Taza de café con arte latte sobre mesa de madera',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80',
+    alt: 'Espacio interior de cafetería moderna con luz natural',
+  },
+];
+
 export default function App() {
   return (
     <div className="page">
@@ -24,9 +39,7 @@ export default function App() {
           <div className="hero-copy">
             <p className="tag">{businessInfo.subtitle}</p>
             <h1>Una experiencia boutique de café para clientes que valoran diseño, sabor y pausa.</h1>
-            <p className="lead">
-              Creamos un recorrido sensorial: barra abierta, repostería de estación y espacios que se sienten como un editorial vivo.
-            </p>
+            <p className="lead">Creamos un recorrido sensorial: barra abierta, repostería de estación y espacios que se sienten como un editorial vivo.</p>
             <div className="hero-actions">
               <a href="#ubicacion" className="hero-cta">Conocé cómo llegar</a>
               <a href="#servicios" className="hero-secondary">Descubrir servicios</a>
@@ -44,6 +57,18 @@ export default function App() {
           </aside>
         </section>
 
+        <section className="container photo-mosaic" aria-label="Galería del café">
+          <figure className="mosaic-item mosaic-main">
+            <img src={galleryImages[0].src} alt={galleryImages[0].alt} loading="lazy" />
+          </figure>
+          <figure className="mosaic-item">
+            <img src={galleryImages[1].src} alt={galleryImages[1].alt} loading="lazy" />
+          </figure>
+          <figure className="mosaic-item">
+            <img src={galleryImages[2].src} alt={galleryImages[2].alt} loading="lazy" />
+          </figure>
+        </section>
+
         <section className="container stats" aria-label="Métricas del local">
           {businessInfo.stats.map((item) => (
             <article key={item.label}>
@@ -59,10 +84,14 @@ export default function App() {
             <p className="tag">Carta Curada</p>
             <h2>Sabores que transforman una pausa en un ritual</h2>
           </div>
-          <div className="cards">
-            {businessInfo.featuredFlavors.map((flavor) => (
-              <article key={flavor.name} className="card">
-                <span className="card-accent" aria-hidden="true" />
+          <div className="flavor-grid">
+            <article className="card featured-flavor">
+              <span className="card-accent" aria-hidden="true" />
+              <h3>{businessInfo.featuredFlavors[0].name}</h3>
+              <p>{businessInfo.featuredFlavors[0].note}</p>
+            </article>
+            {businessInfo.featuredFlavors.slice(1).map((flavor) => (
+              <article key={flavor.name} className="card flavor-mini">
                 <h3>{flavor.name}</h3>
                 <p>{flavor.note}</p>
               </article>
@@ -75,9 +104,9 @@ export default function App() {
             <p className="tag">Propuesta Premium</p>
             <h2>Servicios diseñados para agendas reales</h2>
           </div>
-          <div className="cards">
+          <div className="service-grid">
             {businessInfo.services.map((service, index) => (
-              <article key={service.title} className="card service-card">
+              <article key={service.title} className={`card service-card service-${index + 1}`}>
                 <span className="service-id">0{index + 1}</span>
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
@@ -91,9 +120,9 @@ export default function App() {
             <p className="tag">Prueba Social</p>
             <h2>Clientes que nos recomiendan por experiencia completa</h2>
           </div>
-          <div className="cards">
-            {businessInfo.testimonials.map((testimonial) => (
-              <blockquote key={testimonial.author} className="card quote-card">
+          <div className="testimonial-grid">
+            {businessInfo.testimonials.map((testimonial, index) => (
+              <blockquote key={testimonial.author} className={`card quote-card quote-${index + 1}`}>
                 <p>“{testimonial.quote}”</p>
                 <cite>{testimonial.author}</cite>
               </blockquote>
@@ -105,20 +134,11 @@ export default function App() {
           <div className="location-card">
             <h2>Ubicación y horarios</h2>
             <p>{businessInfo.address}</p>
-            <ul>
-              {businessInfo.hours.map((line) => (
-                <li key={line}>{line}</li>
-              ))}
-            </ul>
+            <ul>{businessInfo.hours.map((line) => <li key={line}>{line}</li>)}</ul>
             <p className="contact-line">WhatsApp: {businessInfo.phone}</p>
             <p className="contact-line">Email: {businessInfo.email}</p>
           </div>
-          <iframe
-            title="Mapa de Helecho Café"
-            src={businessInfo.mapsEmbed}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+          <iframe title="Mapa de Helecho Café" src={businessInfo.mapsEmbed} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
         </section>
 
         <section className="cta container section">
@@ -128,11 +148,7 @@ export default function App() {
         </section>
       </main>
 
-      <footer className="footer">
-        <div className="container">
-          <p>© {new Date().getFullYear()} {businessInfo.name}. Todos los derechos reservados.</p>
-        </div>
-      </footer>
+      <footer className="footer"><div className="container"><p>© {new Date().getFullYear()} {businessInfo.name}. Todos los derechos reservados.</p></div></footer>
 
       <WhatsAppFloatingButton />
     </div>
