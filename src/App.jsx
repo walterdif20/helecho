@@ -23,7 +23,10 @@ export default function App() {
       <div className="ambient ambient-b" aria-hidden="true" />
       <header className="navbar">
         <div className="container nav-inner">
-          <strong className="brand">{businessInfo.name}</strong>
+          <a href="#" className="brand" aria-label="Inicio de Helecho">
+            <span className="brand-logo" aria-hidden="true">Logo</span>
+            <span className="brand-text">{businessInfo.name}</span>
+          </a>
           <nav><a href="#antojos">Antojos</a><a href="#servicios">Menú del día</a><a href="#ubicacion">Ubicación</a></nav>
           <a href="#ubicacion" className="nav-cta">Vení a conocerlo</a>
         </div>
@@ -57,6 +60,12 @@ export default function App() {
 
         <section className="container stats" aria-label="Métricas del local">
           {businessInfo.stats.map((item) => <article key={item.label}><strong>{item.value}</strong><span>{item.label}</span></article>)}
+        </section>
+
+        <section className="container section menu-strips" aria-label="Especialidades">
+          <article><h3>Café & Pastelería</h3><p>Espresso, filtrados y piezas artesanales recién horneadas.</p></article>
+          <article><h3>Almuerzo del día</h3><p>Viandas, ensaladas y opciones saladas para cortar la rutina.</p></article>
+          <article><h3>Merienda que abraza</h3><p>Tortas, cheesecake y propuestas para compartir en mesa.</p></article>
         </section>
 
         <section id="ubicacion" className="container section split">
