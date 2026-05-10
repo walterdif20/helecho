@@ -25,7 +25,7 @@ export default function App() {
         <div className="container nav-inner">
           <a href="#" className="brand" aria-label="Inicio de Helecho">
             <span className="brand-logo" aria-hidden="true">
-              <img src="/logo-helecho.png" alt="" />
+              <img src="logo-helecho.png" alt="" />
             </span>
             <span className="brand-text">{businessInfo.name}</span>
           </a>
@@ -48,21 +48,19 @@ export default function App() {
         <section className="container photo-mosaic" aria-label="Galería del café">
           {galleryImages.map((img, i) => <figure key={img.src} className={`mosaic-item ${i === 0 ? 'mosaic-main' : ''}`}><img src={img.src} alt={img.alt} loading="lazy" /></figure>)}
         </section>
-
+<br />
         <section id="antojos" className="container section cravings-layout">
           <div className="section-head"><p className="tag">Para todos los antojos</p><h2>De la vitrina al plato: siempre hay algo rico esperándote.</h2></div>
           <div className="cravings-cloud">{cravings.map((item) => <span key={item}>{item}</span>)}</div>
           <p className="menu-copy">Café, pastelería artesanal, tortas, cheesecake, vitrina del día, ensaladas, viandas y opciones saladas. También tenemos opciones veganas, sin azúcar, keto y <strong>consultá opciones sin TACC disponibles</strong>.</p>
         </section>
-
+<br />
         <section id="servicios" className="container section ritual-section">
           <div className="section-head"><p className="tag">Ritual del día</p><h2>Tu pausa cambia según la hora, el clima y el antojo.</h2></div>
           <ol className="ritual-line">{ritual.map(([hour, text]) => <li key={hour}><span>{hour}</span><p>{text}</p></li>)}</ol>
         </section>
 
-        <section className="container stats" aria-label="Métricas del local">
-          {businessInfo.stats.map((item) => <article key={item.label}><strong>{item.value}</strong><span>{item.label}</span></article>)}
-        </section>
+     
 
         <section className="container section menu-strips" aria-label="Especialidades">
           <article><h3>Café & Pastelería</h3><p>Espresso, filtrados y piezas artesanales recién horneadas.</p></article>
@@ -74,7 +72,7 @@ export default function App() {
           <div className="location-card">
             <p className="location-kicker">Nos encontrás en el centro</p>
             <h2>Pasá por Helecho en Necochea</h2>
-            <p className="location-lead">{businessInfo.address}</p>
+            <p className="location-lead">📍{businessInfo.address}</p>
             <ul>{businessInfo.hours.map((line) => <li key={line}>{line}</li>)}</ul>
             <div className="location-chips">
               <span>Desayuno</span><span>Almuerzo</span><span>Merienda</span>

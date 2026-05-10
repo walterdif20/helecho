@@ -1,5 +1,5 @@
 export const businessInfo = {
-  name: 'HELECHO por MARU PASTELERÍA',
+  name: 'HELECHO',
   subtitle: 'Pastelería artesanal en el centro de Necochea',
   whatsapp: '54 9 11 5555 1212',
   phone: '+54 11 5555-1212',
